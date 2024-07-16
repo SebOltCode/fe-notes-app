@@ -1,51 +1,29 @@
-# React SPA for Notes App
+# AI Diary Analysis Project
 
-Used during AI prompting recap for Gen AI integration
+Welcome to the AI Diary Analysis Project repository! This project was developed as a one-week solo assignment, where the main framework was provided by the instructors, and my task was to implement various AI functionalities.
 
-## Setup
+## Project Overview
 
-- Fork repo
-- Clone into your computer
-- `cd` into working directory
-- `npm i` to install dependencies
-- create a `.env.development.local` file with two variables:
-  - `VITE_NOTES_API` set to `http://localhost:8080` assuming your backend API is running on port 8080
-  - `VITE_PROXY_OPENAI` set to `http://localhost:5050` assuming your Open AI proxy API is running on port 5050
-- The server defaults to port `5173`, although you can override this in the script sections in `package.json`
+### Objective
+The primary objective of this project was to implement AI functionalities to:
+1. Summarize text from diary entries.
+2. Convert diary entries to speech.
+3. Create a graphical mood barometer from various diary entries using the OpenAI API.
 
-## Commands
+### Key Features
+- **Text Summarization:** Uses AI to generate concise summaries of diary entries.
+- **Speech Synthesis:** Converts the summarized text into speech, making it accessible as audio.
+- **Mood Barometer:** Analyzes the sentiment of diary entries and visualizes the mood trends graphically.
 
-- `npm run dev`: Starts development server, pulling environment variables from `.env.development.local` file
-- `npm run build`: Build app with enviroment set to `.env.production.local`
-- `npm start`: Production server
+## Technologies Used
+- **OpenAI API:** For text summarization and sentiment analysis.
+- **Proxied Server Communication:** Interaction with the OpenAI API is handled through a proxy server.
+- **HTML/CSS/JavaScript:** Frontend development for displaying and interacting with the diary entries.
+- **Python/Flask:** Backend development for handling API requests and processing data.
 
-## Usage
-
-- The application has its entry point at `src/main.jsx`
-- `App.jsx` return a `RouterProvider` with 2 routes:
-  - `/` => `Diary`
-  - `/notes` => `SchoolNotes`
-- The code is organised as follows:
-  - There's a path resolution alias `@/` => `.src/` to avoid relative paths in imports. This is setup in `vite.config.js` to inform Vite, and `jsconfig.json` to inform the TS compiler in the editor.
-    - e.g:
-    ```javascript
-    // src/pages/Diary.jsx
-    import { CreateEntry, MoodAIAnalysis, EntriesList } from '@/components/Diary';
-    // instead of
-    import { CreateEntry, MoodAIAnalysis, EntriesList } from '../components/Diary';
-    ```
-  - For organisation sake, components are grouped in directories, and imported and re-exported from an `index.js` file:
-    ```javascript
-    // src/pages/Diary.jsx
-    // This allows us to do this
-    import { CreateEntry, MoodAIAnalysis, EntriesList } from '@/components/Diary';
-    // instead of this
-    import CreateEntry from '@/components/Diary/CreateEntry';
-    import MoodAIAnalysis from '@/components/Diary/MoodAIAnalysis';
-    import EntriesList from '@/components/Diary/EntriesList';
-    // Ain't nobody got time for that
-    ```
-  - `pages`: React components that are directly mapped to a route.
-  - `components`: React components used in pages
-  - `layouts`: React components that are used as layouts in routes and render `Outlet`
-  - `TailwindCSS` and `DaisyUI` are configured for styles <3
+## Project Structure
+- `index.html`: The main HTML file for the project interface.
+- `styles.css`: CSS file for styling the project interface.
+- `script.js`: JavaScript file for handling frontend logic.
+- `server.py`: Python file for the Flask server to handle backend operations and API communication.
+- `requirements.txt`: Lists the Python dependencies required for the project.
